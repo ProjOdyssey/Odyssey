@@ -54,3 +54,67 @@ router.post('/buy', async (req, res) => {
 });
 
 module.exports = router;
+
+// marketplace ui
+
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import './Marketplace.css'; // Optional CSS for styling
+
+function Marketplace() {
+  const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Fetch items from the backend API
+    axios.get('/api/marketplace/items')
+      .then(response => {
+        setItems(response.data);
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error('Error fetching marketplace items:', error);
+        setLoading(false);
+      });
+  }, []);
+
+  const handleBuy = (itemId) => {
+    // Replace with the actual buyer's public key
+    const buyerPublicKey = 'your-public-key-here';
+
+    axios.post('/api/marketplace/buy', { itemId, buyerPublicKey })
+      .then(response => {
+        alert(`Transaction successful! You have purchased ${response.data.newOwner}`);
+      })
+      .catch(error => {
+        alert('Failed to complete transaction. Please try again.');
+      });
+  };
+
+  if (loading) {
+    return <div>Loading marketplace...</div>;
+  }
+
+  return (
+    <div className="marketplace-container">
+      <h1>Marketplace</h1>
+      <div className="marketplace-grid">
+        {items.map(item => (
+          <div key={item.id} className="marketplace-item">
+            <img
+              src={`https://example.com/images/${item.name}.png`} // Replace with actual image URLs
+              alt={item.name}
+              className="marketplace-item-image"
+            />
+            <h3>{item.name}</h3>
+            <p>Price: {item.price} SOL</p>
+            <button onClick={() => handleBuy(item.id)}>Buy</button>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default Marketplace;
+

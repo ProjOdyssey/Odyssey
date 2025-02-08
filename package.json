@@ -1,27 +1,51 @@
-* Dependencies:
-
-express: Used to set up your backend server.
-solana-web3.js: Solana SDK for interacting with the blockchain.
-react, react-dom: React for your client-side interface.
-redux and react-redux: For state management (if needed for client-side).
-socket.io: Real-time communication for multiplayer features.
-axios: For API calls (especially if integrating any external services).
-
-* DevDependencies:
-
-webpack, webpack-cli, babel-loader: Bundling and JavaScript transpilation for frontend code.
-react-scripts: Create React app scripts to help with React development.
-jest: For running unit tests and coverage.
-nodemon: For auto-restarting the server during development.
-eslint: To enforce code style and quality standards.
-
-* Scripts:
-
-start: Runs the server.
-dev: Starts the backend and frontend for development.
-server-dev: Uses nodemon to automatically restart the server on code changes.
-client-dev: Starts the React development server.
-build: Bundles the application for production.
-test: Runs tests with Jest.
-deploy: Example deploy script (you can customize this for your chosen platform).
-ci: For continuous integration, running tests and building before deployment.
+{
+  "name": "odyssey",
+  "version": "1.0.0",
+  "description": "An MMO game project with Solana marketplace integration",
+  "main": "src/server/index.js",
+  "scripts": {
+    "start": "node src/server/index.js", 
+    "dev": "npm run server-dev", 
+    "server-dev": "nodemon src/server/index.js", 
+    "client-dev": "react-scripts start", 
+    "build": "webpack --config webpack.config.js", 
+    "test": "jest --coverage", 
+    "deploy": "npm run build && firebase deploy", 
+    "ci": "npm install && npm run test && npm run build"
+  },
+  "keywords": ["game", "mmo", "blockchain", "solana"],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1", 
+    "solana-web3.js": "^1.27.0", 
+    "react": "^18.0.0", 
+    "react-dom": "^18.0.0", 
+    "redux": "^4.1.0", 
+    "react-redux": "^7.2.8", 
+    "socket.io": "^4.0.1", 
+    "axios": "^0.21.1"
+  },
+  "devDependencies": {
+    "webpack": "^5.50.0", 
+    "webpack-cli": "^4.8.0", 
+    "babel-loader": "^8.2.2", 
+    "react-scripts": "^4.0.3", 
+    "jest": "^27.0.0", 
+    "nodemon": "^2.0.7", 
+    "eslint": "^7.30.0", 
+    "eslint-plugin-react": "^7.24.0", 
+    "babel-eslint": "^10.1.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/odyssey"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/odyssey/issues"
+  },
+  "homepage": "https://your-odyssey-game.com"
+}

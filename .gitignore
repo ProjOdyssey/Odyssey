@@ -1,0 +1,44 @@
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+
+# Build directories
+/dist/
+build/
+*.tgz
+
+# React
+/.cache/
+/public/
+
+# Server environment files
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+*.log.*
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+
+# Tests
+/coverage/
+
+# Temporary files
+*.swp
+*.swo
+
+# Solana-related files
+/target/
+
+# Webpack output
+/.webpack/

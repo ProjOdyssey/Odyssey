@@ -6,7 +6,6 @@ Odyssey is an open-world MMO with deep PvE gameplay and a player-driven economy.
 ![600x200](https://github.com/user-attachments/assets/1ab0af7a-222a-40f0-9c43-7c0c1652e7b6)
 
 - 📜 Odyssey MMO - A Next-Gen Blockchain-Powered Game
-(Replace with actual image)
 
 Welcome to Odyssey, an open-world MMO featuring deep PvE mechanics and a player-driven economy powered by Solana! Explore vast landscapes, battle legendary creatures, and trade in-game assets seamlessly using blockchain technology.
 

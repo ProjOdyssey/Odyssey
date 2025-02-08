@@ -42,10 +42,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-username/odyssey"
+    "url": "https://github.com/ProjOdyssey/Odyssey"
   },
   "bugs": {
-    "url": "https://github.com/your-username/odyssey/issues"
+    "url": "https://github.com/ProjOdyssey/Odyssey/issues"
   },
-  "homepage": "https://your-odyssey-game.com"
+  "homepage": "ProjectOdyssey.com"
 }

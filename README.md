@@ -41,5 +41,8 @@ Want to contribute? Follow these steps:
 3. Commit your changes and push to GitHub.
 4. Open a pull request for review.
 
+   ![DALL·E 2025-02-08 17 56 02 - A marketplace website interface for 'Odyssey,' an open-world MMO with an earthy fantasy aesthetic, powered by Solana  The UI features a warm, nature-i](https://github.com/user-attachments/assets/1925257c-392f-412a-aa21-66da5e5ffd93)
+
+
    📜 License
 This project is closed-source and proprietary. Unauthorized use, modification, or distribution is prohibited. See LICENSE for details.

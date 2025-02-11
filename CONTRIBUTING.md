@@ -34,7 +34,7 @@ Thank you for your interest in contributing to Odyssey! We welcome contributions
 
 🐞 Reporting Issues
 
-. Use the Issues tab to report bugs.
+. Use the bug_report.md to report bugs.
 
 . Provide steps to reproduce, expected behavior, and screenshots if applicable.
 

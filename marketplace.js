@@ -118,3 +118,71 @@ function Marketplace() {
 
 export default Marketplace;
 
+//! Odyssey NFT Marketplace Smart Contract
+//! This Solana smart contract allows users to list, buy, and sell NFTs securely on-chain.
+
+use anchor_lang::prelude::*;
+
+#[program]
+pub mod odyssey_nft_marketplace {
+    use super::*;
+
+    pub fn list_nft(ctx: Context<ListNFT>, price: u64) -> Result<()> {
+        let nft = &mut ctx.accounts.nft;
+        nft.owner = *ctx.accounts.owner.key;
+        nft.price = price;
+        nft.is_listed = true;
+        Ok(())
+    }
+
+    pub fn buy_nft(ctx: Context<BuyNFT>) -> Result<()> {
+        let nft = &mut ctx.accounts.nft;
+        let buyer = &ctx.accounts.buyer;
+        let seller = &ctx.accounts.seller;
+        
+        require!(nft.is_listed, OdysseyError::NFTNotListed);
+        require!(buyer.lamports() >= nft.price, OdysseyError::InsufficientFunds);
+
+        **seller.to_account_info().try_borrow_mut_lamports()? += nft.price;
+        **buyer.to_account_info().try_borrow_mut_lamports()? -= nft.price;
+        nft.owner = *buyer.key;
+        nft.is_listed = false;
+
+        Ok(())
+    }
+}
+
+#[derive(Accounts)]
+pub struct ListNFT<'info> {
+    #[account(mut)]
+    pub owner: Signer<'info>,
+    #[account(init, payer = owner, space = 8 + 40)]
+    pub nft: Account<'info, NFT>,
+    pub system_program: Program<'info, System>,
+}
+
+#[derive(Accounts)]
+pub struct BuyNFT<'info> {
+    #[account(mut)]
+    pub buyer: Signer<'info>,
+    #[account(mut)]
+    pub seller: AccountInfo<'info>,
+    #[account(mut)]
+    pub nft: Account<'info, NFT>,
+    pub system_program: Program<'info, System>,
+}
+
+#[account]
+pub struct NFT {
+    pub owner: Pubkey,
+    pub price: u64,
+    pub is_listed: bool,
+}
+
+#[error_code]
+pub enum OdysseyError {
+    #[msg("NFT is not listed for sale.")]
+    NFTNotListed,
+    #[msg("Buyer has insufficient funds.")]
+    InsufficientFunds,
+}
